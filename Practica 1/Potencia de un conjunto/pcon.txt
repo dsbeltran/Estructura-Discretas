@@ -1,0 +1,78 @@
+using System;
+
+namespace Potencia_de_un_Conjunto
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int tam, tam_p, i, con, j;
+            string[] con_a,pot_a;
+            bool exi;
+            Console.WriteLine("BIENVENIDO AL PROGRAMA");
+            /*
+             * Console.WriteLine("Ingresa el tamaño de tu conjunto A");
+            tam = Convert.ToInt32(Console.ReadLine());
+            con_a = new char[tam];
+            for (int i=0;i<tam;i++)
+            {
+                Console.WriteLine("Ingresa los valores de A");
+                con_a[i] = Convert.ToChar(Console.ReadLine());
+            }
+            */
+            tam = 3;
+            con_a = new string[3] {"1","2","3"};
+            
+            
+            tam_p = Convert.ToInt32(Math.Pow(2, tam));
+            pot_a = new string[tam_p];
+            pot_a[0] = "vacio";
+            for (i=1,con=0;i<tam+1;i++,con++)
+            {
+                pot_a[i] = con_a[con];
+            }
+            con = con + 1;
+            for (i = 0; i < tam; i++)
+            {
+                for(j=0;j<tam;j++)
+                {
+                    if (con_a[i] == con_a[j])
+                    {
+
+                    }
+                    else if (con_a[i] != con_a[j])
+                    {
+                        for(int z=0;z<tam_p;z++)
+                        {
+                            exi = pot_a[z].Contains( con_a[j] + con_a[i]);
+                            if (exi)
+                            {
+
+                            }
+                            else
+                            {
+                                pot_a[con] = "{" + con_a[i] + "," + con_a[j] + "}";
+                                break;
+                            }
+                            
+                        }
+
+                        con++;
+                    }
+                }
+                
+            }
+
+            Console.WriteLine("LA POTENCIA DE TU CONJUNTO ES:");
+            Console.Write("{");
+            for (i = 0; i < tam_p; i++)
+            {
+                Console.Write(pot_a[i]+" ");
+            }
+            Console.Write("}");
+
+
+            Console.ReadKey();
+        }
+    }
+}
